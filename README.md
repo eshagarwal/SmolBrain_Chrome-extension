@@ -6,31 +6,31 @@ How many of you have opened a webpage and thought — why is this written so com
 
 ---
 
-## The Problem
+## ⚠️ The Problem
 
 The Internet is unnecessarily complex.
 
-- Technical documentation  
+- 📘 Technical documentation  
   API references and developer guides written for experts  
 
-- Research papers  
+- 📄 Research papers  
   Academic studies packed with jargon and methodology  
 
-- Legal policies  
+- ⚖️ Legal policies  
   Terms and conditions that require a law degree  
 
-- Medical information  
+- 🏥 Medical information  
   Health articles full of technical terminology  
 
-- Complex blogs  
-  Long-form content that assumes too much background knowledge  
+- 📝 Complex blogs  
+  Long-form content that assumes too much background knowledge 
 
 **The problem isn't the idea — it's the language.  
 Brilliant concepts get lost in unnecessarily complex writing.**
 
 ---
 
-## SmolBrain — Internet, but Simpler!
+## 🚀 SmolBrain — Internet, but Simpler!
 
 One click. Any page. Instantly simpler.
 
@@ -44,44 +44,44 @@ One click. Any page. Instantly simpler.
 
 ---
 
-## Understanding the web your way
+## 🧠 Understanding the web your way
 
-### Smol Mode
+### 🔹 Smol Mode
 Explain the page in simple terms
 
-### Teacher Mode
+### 👨‍🏫 Teacher Mode
 Step-by-step explanation
 
-### TLDR Mode
+### ⚡ TLDR Mode
 Three-bullet summary for quick understanding
 
-### Baby Mode
+### 👶 Baby Mode
 Explain like you're five — no jargon, just clarity
 
 
 ---
 
-## Built for everyone
+## 👥 Built for everyone
 
-- Students  
+- 🎓 Students  
   Reading research papers and academic materials  
 
-- Developers  
+- 💻 Developers  
   Navigating complex technical documentation  
 
-- Professionals  
+- 👔 Professionals  
   Understanding legal policies and contracts  
 
-- Patients  
+- 🩺 Patients  
   Reading medical information and health resources  
 
-- Everyone  
+- 🌍 Everyone  
   Non-native English speakers learning online  
 
 
 ---
 
-## Built with AI
+## 🤖 Built with AI
 
 ## Structure
 ### Chrome extension in [chrome_extension](./chrome-extension/)
@@ -98,14 +98,14 @@ It uses the side panel api from chrome to show the initial explanation and then 
 - GLM-5 AI model
 
 
-### Partners & Sponsors
+### 🤝 Partners & Sponsors
 
 - Featherless.ai — powering our AI inference  
 - AWS Kiro — our vibe coding partner  
 
 ---
 
-## Demo
+## 🎬 Demo
 
 ![image](./docs/image1.png)
 ![image](./docs/image2.png)
@@ -119,4 +119,4 @@ It uses the side panel api from chrome to show the initial explanation and then 
 
 ---
 
-## Thank you - Powered by [featherless](https://featherless.ai/) & [AWS Kiro](https://kiro.dev/)
+## 🙌 Thank you - Powered by [featherless](https://featherless.ai/) & [AWS Kiro](https://kiro.dev/)
