@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 // ── Config ──
-const API_KEY = "rc_3639ff4043057a19946d1225f1b1a9515439b73f61c96e4a955f5c422756789c";
-const BASE_URL = "https://api.featherless.ai/v1";
+const API_KEY = process.env.FEATHERLESS_API_KEY;
+const BASE_URL = process.env.FEATHERLESS_BASE_URL;
 const MODEL = "zai-org/GLM-5";
 
 // ── DOM refs ──
