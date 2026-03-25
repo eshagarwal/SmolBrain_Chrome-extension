@@ -98,7 +98,7 @@ It uses the side panel api from chrome to show the initial explanation and then 
 - GLM-5 AI model
 
 
-### 🤝 Partners & Sponsors
+### 🤝 Partners
 
 - Featherless.ai — powering our AI inference  
 - AWS Kiro — our vibe coding partner  
