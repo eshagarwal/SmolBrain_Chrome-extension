@@ -209,10 +209,4 @@ For any OpenAI-compatible API:
 
 ---
 
-## 📄 Presentation
-
-[Download the PDF](docs/SmolBrain.pdf)
-
----
-
 ## 🙌 Thank you
