@@ -1,10 +1,3 @@
-require("dotenv").config();
-
-// ── Config ──
-const API_KEY = process.env.FEATHERLESS_API_KEY;
-const BASE_URL = process.env.FEATHERLESS_BASE_URL;
-const MODEL = "zai-org/GLM-5";
-
 // ── DOM refs ──
 const emptyState = document.getElementById("empty-state");
 const explanationCard = document.getElementById("explanation-card");
@@ -17,26 +10,86 @@ const chatInput = document.getElementById("chat-input");
 const sendBtn = document.getElementById("send-btn");
 const headerStatus = document.getElementById("header-status");
 const mainEl = document.getElementById("main");
+const setupHint = document.getElementById("setup-hint");
 
 // ── State ──
 let pageContent = "";
 let conversationHistory = [];
 let lastPrompt = "";
 
+// ── Check if settings are configured on load ──
+(async function checkSettings() {
+    const settings = await getSettings();
+    // Show hint if using defaults (no custom API configured)
+    if (!settings.apiUrl && !settings.apiKey) {
+        setupHint.style.display = "flex";
+    }
+})();
+
 // ── API ──
 async function callLLM(messages) {
-    const res = await fetch(`${BASE_URL}/chat/completions`, {
+
+    const settings = await getSettings()
+
+    const baseUrl = settings.apiUrl || "https://api.featherless.ai/v1"
+    const model = settings.model || "zai-org/GLM-5"
+    const apiKey = settings.apiKey || ""
+
+    const headers = {
+        "Content-Type": "application/json"
+    }
+
+    // Only add auth if user provided a key (Ollama doesn't need one)
+    if (apiKey) {
+        headers["Authorization"] = `Bearer ${apiKey}`
+    }
+
+    const res = await fetch(`${baseUrl}/chat/completions`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`,
-        },
-        body: JSON.stringify({ model: MODEL, messages, max_tokens: 600 }),
+        headers,
+        body: JSON.stringify({
+            model,
+            messages,
+            max_tokens: 600
+        }),
     });
-    const data = await res.json();
-    console.log("[SmolBrain] API response:", data);
-    if (!res.ok) throw new Error(data?.error?.message || `API error ${res.status}`);
-    return data.choices[0].message.content.trim();
+
+    const data = await res.json()
+
+    console.log("[SmolBrain] API response:", data)
+
+    if (!res.ok) {
+        const errorMsg = data?.error?.message || `API error ${res.status}`;
+        throw new Error(`${errorMsg}\n\nℹ️ Check your API settings by clicking the gear icon ⚙️`);
+    }
+
+    return extractContent(data);
+}
+
+function extractContent(data) {
+
+    if (!data) return ""
+
+    if (data?.choices?.[0]?.message?.content)
+        return data.choices[0].message.content
+
+    if (data?.choices?.[0]?.text)
+        return data.choices[0].text
+
+    if (data?.message?.content)
+        return data.message.content
+
+    return ""
+}
+
+// ── Settings loader ──
+async function getSettings() {
+    return new Promise(resolve => {
+        chrome.storage.sync.get(
+            ["apiKey", "apiUrl", "model"],
+            resolve
+        );
+    });
 }
 
 // ── Helpers ──
@@ -65,11 +118,26 @@ async function getPageContent() {
     if (pageContent) return pageContent;
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     pageTitleLabel.textContent = tab.title || "Current page";
-    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
-    const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PAGE_CONTENT" });
-    pageContent = (response?.content || "").slice(0, 6000);
-    if (!pageContent.trim()) throw new Error("Could not extract page content.");
-    return pageContent;
+    
+    try {
+        await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["content.js"] });
+        const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PAGE_CONTENT" });
+        pageContent = (response?.content || "").slice(0, 6000);
+        if (!pageContent.trim()) throw new Error("Could not extract page content.");
+        return pageContent;
+    } catch (error) {
+        // Handle restricted pages (chrome://, chrome-extension://, Chrome Web Store, etc.)
+        if (error.message.includes("Cannot access") || 
+            error.message.includes("extensions gallery") ||
+            error.message.includes("chrome://") ||
+            tab.url?.startsWith("chrome://") ||
+            tab.url?.startsWith("chrome-extension://") ||
+            tab.url?.includes("chromewebstore.google.com")) {
+            throw new Error("This page can't be explained.\n\nChrome system pages and extension pages are protected for security reasons. Try visiting a regular website instead!");
+        }
+        // Re-throw other errors
+        throw error;
+    }
 }
 
 // ── First message: show explanation card with skeleton ──
@@ -220,4 +288,13 @@ document.getElementById("new-chat-btn").addEventListener("click", () => {
     lastPrompt = "";
     emptyState.style.display = "flex";
     headerStatus.textContent = "Ready";
+});
+
+document.getElementById("settings-btn").addEventListener("click", () => {
+    chrome.runtime.openOptionsPage();
+});
+
+document.getElementById("open-settings-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    chrome.runtime.openOptionsPage();
 });

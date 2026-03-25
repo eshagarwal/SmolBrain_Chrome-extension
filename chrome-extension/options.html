@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmolBrain Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">🧠</div>
+      <h1>SmolBrain Settings</h1>
+      <p>Configure your AI provider to use your own API</p>
+    </header>
+
+    <main>
+      <div class="section">
+        <h2>Provider Presets</h2>
+        <p class="hint">Quick setup for popular providers</p>
+        <div class="preset-buttons">
+          <button class="preset-btn" data-provider="featherless">
+            <span class="preset-name">Featherless AI</span>
+            <span class="preset-hint">Default provider</span>
+          </button>
+          <button class="preset-btn" data-provider="openai">
+            <span class="preset-name">OpenAI</span>
+            <span class="preset-hint">GPT-4, GPT-3.5</span>
+          </button>
+          <button class="preset-btn" data-provider="ollama">
+            <span class="preset-name">Ollama</span>
+            <span class="preset-hint">Local models</span>
+          </button>
+          <button class="preset-btn" data-provider="openrouter">
+            <span class="preset-name">OpenRouter</span>
+            <span class="preset-hint">Multiple models</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Custom Configuration</h2>
+        
+        <div class="form-group">
+          <label for="apiUrl">
+            API URL
+            <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="apiUrl" 
+            placeholder="https://api.featherless.ai/v1" 
+            required
+          />
+          <span class="help-text">Base URL for your AI provider's API</span>
+        </div>
+
+        <div class="form-group">
+          <label for="apiKey">
+            API Key
+            <span class="optional">(optional for Ollama)</span>
+          </label>
+          <input 
+            type="password" 
+            id="apiKey" 
+            placeholder="Your API key" 
+          />
+          <span class="help-text">Your authentication key for the API</span>
+        </div>
+
+        <div class="form-group">
+          <label for="model">
+            Model Name
+            <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="model" 
+            placeholder="zai-org/GLM-5" 
+            required
+          />
+          <span class="help-text">The specific model to use (e.g., gpt-4, llama2)</span>
+        </div>
+
+        <div class="button-group">
+          <button id="test-btn" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+            </svg>
+            Test Connection
+          </button>
+          <button id="save" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"/>
+            </svg>
+            Save Settings
+          </button>
+        </div>
+
+        <div id="status" class="status"></div>
+      </div>
+
+      <div class="section info-section">
+        <h3>📚 Common Providers</h3>
+        <div class="provider-info">
+          <div class="provider-item">
+            <strong>Featherless AI:</strong>
+            <code>https://api.featherless.ai/v1</code>
+          </div>
+          <div class="provider-item">
+            <strong>OpenAI:</strong>
+            <code>https://api.openai.com/v1</code>
+          </div>
+          <div class="provider-item">
+            <strong>Ollama (Local):</strong>
+            <code>http://localhost:11434/v1</code>
+          </div>
+          <div class="provider-item">
+            <strong>OpenRouter:</strong>
+            <code>https://openrouter.ai/api/v1</code>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -28,11 +28,26 @@ header {
 }
 header h1 { font-size: 0.95rem; font-weight: 600; color: #f0f0ff; }
 header span { font-size: 0.7rem; color: #6b6b8a; }
+#settings-btn {
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  padding: 6px;
+  background: #1a1a28;
+  border: 1px solid #2a2a3e;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#settings-btn:hover { background: #2a2a3e; border-color: #7c3aed66; }
+#settings-btn svg { width: 18px; height: 18px; fill: #a0a0c0; }
 #new-chat-btn {
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-left: auto;
   padding: 5px 10px;
   background: #1a1a28;
   border: 1px solid #2a2a3e;
@@ -375,6 +390,27 @@ header span { font-size: 0.7rem; color: #6b6b8a; }
 #send-btn:hover { opacity: 0.85; }
 #send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 #send-btn svg { width: 14px; height: 14px; fill: white; }
+
+#setup-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #a0a0c0;
+  margin-top: 8px;
+}
+#setup-hint a {
+  color: #7c3aed;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#setup-hint a:hover {
+  color: #9f67ff;
+}
 
 /* ── Suggestion chips ── */
 #suggestions {

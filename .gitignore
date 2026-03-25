@@ -1,0 +1,17 @@
+# Ignore environment files with sensitive data
+chrome-extension/.env
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# Ignore logs
+*.log
+
+# Ignore node_modules if you add them later
+node_modules/

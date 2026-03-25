@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f13;
+  color: #e8e8f0;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #1e1e2e;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f0f0ff;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 14px;
+  color: #a0a0c0;
+}
+
+/* ── Sections ── */
+.section {
+  background: #1a1a24;
+  border: 1px solid #2a2a3e;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0f0ff;
+  margin-bottom: 8px;
+}
+
+.section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f0f0ff;
+  margin-bottom: 16px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #6b6b8a;
+  margin-bottom: 16px;
+}
+
+/* ── Preset Buttons ── */
+.preset-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.preset-btn {
+  background: #242433;
+  border: 2px solid #2a2a3e;
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.preset-btn:hover {
+  border-color: #7c3aed;
+  background: #2a2a3e;
+  transform: translateY(-2px);
+}
+
+.preset-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0f0ff;
+}
+
+.preset-hint {
+  font-size: 12px;
+  color: #6b6b8a;
+}
+
+/* ── Form Groups ── */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #d0d0e0;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.optional {
+  color: #6b6b8a;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+input {
+  width: 100%;
+  background: #242433;
+  border: 2px solid #2a2a3e;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  color: #f0f0ff;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+input::placeholder {
+  color: #6b6b8a;
+}
+
+.help-text {
+  display: block;
+  font-size: 12px;
+  color: #6b6b8a;
+  margin-top: 6px;
+}
+
+/* ── Buttons ── */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.btn-secondary {
+  background: #242433;
+  border: 2px solid #2a2a3e;
+  color: #d0d0e0;
+}
+
+.btn-secondary:hover {
+  border-color: #7c3aed;
+  background: #2a2a3e;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Status Messages ── */
+.status {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+}
+
+.status-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+.status-info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+/* ── Info Section ── */
+.info-section {
+  background: #141420;
+  border-color: #1e1e2e;
+}
+
+.provider-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.provider-item {
+  background: #1a1a24;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a3e;
+  font-size: 13px;
+}
+
+.provider-item strong {
+  color: #d0d0e0;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.provider-item code {
+  color: #a0a0c0;
+  background: #242433;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  display: inline-block;
+}
