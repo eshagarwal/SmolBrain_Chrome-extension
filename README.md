@@ -1,4 +1,6 @@
 # SmolBrain  🧠✨
+#### ⬇️ Download the chrome extension and try it out! [LINK](https://chromewebstore.google.com/detail/jhkpgjobmoamadofcghfeedpclbmappi?utm_source=item-share-cb)
+
 ### Internet, but Simpler!
 
 How many of you have opened a webpage and thought — why is this written so complicated?
