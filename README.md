@@ -209,4 +209,8 @@ For any OpenAI-compatible API:
 
 ---
 
+## LICENSE
+
+[MIT](./LICENSE)
+
 ## 🙌 Thank you
